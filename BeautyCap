@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeautyCap ✨ แคปชั่น & แฮชแท็กรีวิวสกินแคร์และความงาม</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdf8fa;
+      --surface: #ffffff;
+      --primary: #e15b8c;
+      --primary-hover: #c94676;
+      --primary-soft: #fdebf2;
+      --secondary: #8a5cf5;
+      --secondary-soft: #f2edfe;
+      --text-main: #2d232a;
+      --text-muted: #766871;
+      --border: #f0e1e8;
+      --shadow: 0 8px 24px rgba(225, 91, 140, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Prompt', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      background-image: radial-gradient(circle at 10% 10%, #fce8f0 0%, transparent 40%),
+                        radial-gradient(circle at 90% 20%, #f1ebff 0%, transparent 35%);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 36px 16px 24px;
+    }
+
+    .brand-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-soft), var(--secondary-soft));
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 99px;
+      margin-bottom: 10px;
+      border: 1px solid #f7d6e3;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* Control Panel */
+    .control-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .input-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      background: #fffcfd;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(225, 91, 140, 0.12);
+    }
+
+    .btn-random {
+      align-self: flex-end;
+      height: 45px;
+      padding: 0 18px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.15s, opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-random:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    /* Filter Pills */
+    .filter-section {
+      margin-top: 10px;
+    }
+
+    .filter-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .pills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      padding: 7px 14px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pill:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .pill.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(225, 91, 140, 0.25);
+    }
+
+    .pill.tone-pill.active {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      box-shadow: 0 4px 12px rgba(138, 92, 245, 0.25);
+    }
+
+    /* Status Bar */
+    .status-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width: 480px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(225, 91, 140, 0.13);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      gap: 8px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 99px;
+    }
+
+    .badge-cat {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .badge-tone {
+      background: var(--secondary-soft);
+      color: var(--secondary);
+    }
+
+    .fav-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.25rem;
+      line-height: 1;
+      padding: 4px;
+      color: #d4c4cd;
+      transition: transform 0.15s, color 0.15s;
+    }
+
+    .fav-btn:hover {
+      transform: scale(1.15);
+    }
+
+    .fav-btn.saved {
+      color: #e15b8c;
+    }
+
+    .caption-box {
+      font-size: 0.98rem;
+      color: var(--text-main);
+      margin-bottom: 14px;
+      white-space: pre-line;
+      word-break: break-word;
+    }
+
+    .product-highlight {
+      color: var(--primary);
+      font-weight: 600;
+      background: var(--primary-soft);
+      padding: 0 5px;
+      border-radius: 6px;
+    }
+
+    .hashtag-box {
+      background: #faf6f9;
+      border: 1px dashed #e6d3de;
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      color: #8b5c9e;
+      margin-bottom: 16px;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .btn-copy {
+      padding: 9px 12px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .btn-copy-all {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-copy-all:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-copy-sub {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .btn-copy-sub:hover {
+      background: #fad8e6;
+    }
+
+    /* Empty State */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 48px 20px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px dashed var(--border);
+      color: var(--text-muted);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #2d232a;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 99px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-badge">✨ Beauty Content Creator Helper</div>
+    <h1>คลังแคปชั่น & แฮชแท็ก <span>รีวิวสกินแคร์และความงาม</span></h1>
+    <p class="subtitle">เลือกประเภทสินค้า พิมพ์ชื่อแบรนด์ แล้วกดคัดลอกแคปชั่นคู่แฮชแท็กไปโพสต์ลง TikTok, IG, Lemon8 ได้ทันที</p>
+  </header>
+
+  <main class="container">
+    <section class="control-panel">
+      <div class="input-row">
+        <div class="input-group">
+          <label for="productInput">ชื่อสินค้า / แบรนด์ (ใส่หรือไม่ใส่ก็ได้)</label>
+          <input type="text" id="productInput" class="input-field" placeholder="เช่น เซรั่มวิตซี, กันแดดตัวดัง, ลิปเบอร์ 04...">
+        </div>
+        <div class="input-group">
+          <label for="searchInput">ค้นหาคำในแคปชั่นหรือแฮชแท็ก</label>
+          <input type="text" id="searchInput" class="input-field" placeholder="เช่น หน้าใส, ไม่เหนียว, สิว, ผิวฉ่ำ...">
+        </div>
+        <button id="randomBtn" class="btn-random" title="สุ่มแคปชั่นป้ายยา 1 รายการ">
+          🎲 สุ่มแคปชั่น
+        </button>
+      </div>
+
+      <div class="filter-section">
+        <span class="filter-label">ประเภทสินค้า</span>
+        <div class="pills-wrap" id="categoryPills"></div>
+      </div>
+
+      <div class="filter-section" style="margin-top: 14px;">
+        <span class="filter-label">สไตล์การเขียน</span>
+        <div class="pills-wrap" id="tonePills"></div>
+      </div>
+    </section>
+
+    <div class="status-bar">
+      <span id="resultCount">กำลังโหลด...</span>
+      <span id="clearFilterBtn" style="cursor:pointer; color:var(--primary); font-weight:500; display:none;">ล้างตัวกรองทั้งหมด</span>
+    </div>
+
+    <section class="cards-grid" id="cardsGrid"></section>
+  </main>
+
+  <div id="toast" class="toast">คัดลอกเรียบร้อยแล้ว! ✨</div>
+
+  <script>
+    const CATEGORIES = [
+      { id: 'all', label: '✨ ทั้งหมด' },
+      { id: 'cleanser', label: '🫧 คลีนเซอร์ & ล้างหน้า' },
+      { id: 'serum', label: '💧 เซรั่ม & เอสเซนส์' },
+      { id: 'moisturizer', label: '🧴 มอยส์เจอไรเซอร์' },
+      { id: 'sunscreen', label: '☀️ กันแดด' },
+      { id: 'acne', label: '🌿 ดูแลสิว' },
+      { id: 'mask', label: '🧖‍♀️ มาส์กหน้า' },
+      { id: 'makeup', label: '💄 เมคอัพ & ลิป' },
+      { id: 'body', label: '🌸 บอดี้แคร์' },
+      { id: 'favorites', label: '❤️ ที่บันทึกไว้' }
+    ];
+
+    const TONES = [
+      { id: 'all', label: 'ทุกสไตล์' },
+      { id: 'ป้ายยาเพื่อน', label: '🛍️ ป้ายยาเพื่อน' },
+      { id: 'รีวิวจริงใจ', label: '💬 รีวิวจริงใจ' },
+      { id: 'มินิมอล', label: '🤍 มินิมอล / สั้นๆ' },
+      { id: 'เน้นผลลัพธ์', label: '✨ เน้นผลลัพธ์' }
+    ];
+
+    const DATA = [
+      // Cleanser
+      {
+        id: 1,
+        category: 'cleanser',
+        catLabel: 'คลีนเซอร์ & ล้างหน้า',
+        tone: 'รีวิวจริงใจ',
+        defaultProduct: 'คลีนเซอร์ตัวนี้',
+        caption: 'ล้างสะอาดแต่หน้าไม่เอี๊ยดมีอยู่จริง! ลองใช้ {product} มาสักพัก รู้สึกเลยว่าผิวสะอาดล้ำลึกแต่ยังนุ่มชุ่มชื้นอยู่ ไม่แสบตา ไม่แห้งตึง ใครผิวแพ้ง่ายคือรอดมาก',
+        hashtags: '#รีวิวสกินแคร์ #โฟมล้างหน้า #คลีนเซอร์ผิวแพ้ง่าย #ล้างหน้าลดสิว #ผิวสะอาดไม่แห้งตึง #ไว้รีวิวห้ามขายของโว้ยย #Lemon8Beauty'
+      },
+      {
+        id: 2,
+        category: 'cleanser',
+        catLabel: 'คลีนเซอร์ & ล้างหน้า',
+        tone: 'ป้ายยาเพื่อน',
+        defaultProduct: 'คลีนซิ่งตัวโปรด',
+        caption: 'ยกให้ {product} เป็นลูกรักคนใหม่! ล้างเมคอัพและฝุ่นควันออกเกลี้ยงแบบไม่ต้องถูหน้าแรงๆ ลดสิวอุดตันไปได้เยอะมาก ใครแต่งหน้าทุกวันต้องมีติดห้องน้ำด่วนๆ',
+        hashtags: '#ป้ายยาสกินแคร์ #คลีนซิ่ง #ลดสิวอุดตัน #ไอเทมคนเป็นสิว #ใช้ดีบอกต่อ #TikTokป้ายยา #SkincareRoutine'
+      },
+      {
+        id: 3,
+        category: 'cleanser',
+        catLabel: 'คลีนเซอร์ & ล้างหน้า',
+        tone: 'มินิมอล',
+        defaultProduct: 'เจลล้างหน้าขวดนี้',
+        caption: 'ผิวดีเริ่มที่ขั้นตอนล้างหน้า ✨ ยกความดีให้ {product} ฟองนุ่ม อ่อนโยน ล้างเสร็จผิวยังเด้งชุ่มชื้นอยู่เลย',
+        hashtags: '#ผิวใสไร้สิว #ล้างหน้าให้สะอาด #สกินแคร์รูทีน #คลีนเซอร์ #มินิมอลสกินแคร์ #รีวิวบิวตี้'
+      },
+
+      // Serum
+      {
+        id: 4,
+        category: 'serum',
+        catLabel: 'เซรั่ม & เอสเซนส์',
+        tone: 'เน้นผลลัพธ์',
+        defaultProduct: 'เซรั่มขวดนี้',
+        caption: 'กู้ผิวโทรมให้กลับมาใสฉ่ำต้องยกให้ {product} จริงๆ เนื้อบางเบา ซึมไวไม่เหนอะหนะ ตื่นมาหน้าฟูอิ่มน้ำเหมือนคนนอนครบ 8 ชม. ผิวดูละเอียดขึ้นแบบเห็นได้ชัด!',
+        hashtags: '#เซรั่มหน้าใส #กู้ผิวโทรม #ผิวฉ่ำโกลว์ #รีวิวเซรั่ม #สกินแคร์หน้าใส #ไว้รีวิวห้ามขายของโว้ยย #Lemon8ฮาวทู'
+      },
+      {
+        id: 5,
+        category: 'serum',
+        catLabel: 'เซรั่ม & เอสเซนส์',
+        tone: 'ป้ายยาเพื่อน',
+        defaultProduct: 'เซรั่มตัวดัง',
+        caption: 'ใครกำลังมองหาเซรั่มลดรอยสิว รีบกด {product} ด่วน! ใช้ต่อเนื่องแล้วรอยดำรอยแดงดูจางลงไวมาก ผิวหน้าดูไบรท์เล่นแสงสุดๆ ซื้อซ้ำขวดที่ 3 แล้วไม่เกินจริง',
+        hashtags: '#ป้ายยาเซรั่ม #ลดรอยสิว #ผิวกระจ่างใส #ของมันต้องมี #ใช้ดีบอกต่อไม่จกตา #TikTokบิวตี้'
+      },
+      {
+        id: 6,
+        category: 'serum',
+        catLabel: 'เซรั่ม & เอสเซนส์',
+        tone: 'รีวิวจริงใจ',
+        defaultProduct: 'เอสเซนส์ตัวนี้',
+        caption: 'รีวิวจากใจคนผิวระคายเคืองง่าย {product} ช่วยปลอบประโลมผิวดีมาก ช่วงไหนหน้าพังหรือตากแดดมาหนักๆ โบกตัวนี้ก่อนนอนคือเอาอยู่ ผิวสงบขึ้นเยอะเลย',
+        hashtags: '#กู้ผิวพัง #ผิวแพ้ง่ายใช้ได้ #ปลอบประโลมผิว #รีวิวจริงใช้จริง #สกินแคร์สายคลีน #SkincareReview'
+      },
+
+      // Moisturizer
+      {
+        id: 7,
+        category: 'moisturizer',
+        catLabel: 'มอยส์เจอไรเซอร์',
+        tone: 'เน้นผลลัพธ์',
+        defaultProduct: 'มอยส์เจอไรเซอร์ตัวนี้',
+        caption: 'โบก {product} ก่อนนอนทุกคืนคือเดอะเบสต์! ช่วยล็อกความชุ่มชื้นได้ดีมาก เสริมเกราะป้องกันผิวให้แข็งแรง ลดอาการผิวลอกเป็นขุยและหน้ามันระหว่างวันได้จึ้งสุดๆ',
+        hashtags: '#มอยส์เจอไรเซอร์ #ผิวแข็งแรง #เกราะป้องกันผิว #ผิวอิ่มน้ำ #สกินแคร์พื้นฐาน #รีวิวสกินแคร์ #SkinBarrier'
+      },
+      {
+        id: 8,
+        category: 'moisturizer',
+        catLabel: 'มอยส์เจอไรเซอร์',
+        tone: 'มินิมอล',
+        defaultProduct: 'ครีมบำรุงกระปุกนี้',
+        caption: 'เติมน้ำให้ผิวแบบไม่หนักหน้า 💧 {product} เนื้อนุ่มเกลี่ยง่าย สบายผิว เหมาะกับอากาศเมืองไทยสุดๆ',
+        hashtags: '#เติมความชุ่มชื้น #มอยส์เจอไรเซอร์เนื้อเบา #ผิวมันเป็นสิวใช้ได้ #สกินแคร์หน้าร้อน #BeautyTips'
+      },
+      {
+        id: 9,
+        category: 'moisturizer',
+        catLabel: 'มอยส์เจอไรเซอร์',
+        tone: 'ป้ายยาเพื่อน',
+        defaultProduct: 'มอยส์ลูกรักตัวนี้',
+        caption: 'สายแต่งหน้าไม่ติด เป็นคราบ ต้องมี {product} ติดโต๊ะเครื่องแป้งไว้เลย! ทาก่อนลงเมคอัพคือผิวเด้งฉ่ำโกลว์ เครื่องสำอางติดทนขึ้นแบบ 300% เลิฟมากกก',
+        hashtags: '#เตรียมผิวก่อนแต่งหน้า #งานผิวฉ่ำ #เมคอัพติดทน #ป้ายยาสกินแคร์ #ของดีบอกต่อ #Lemon8Beauty'
+      },
+
+      // Sunscreen
+      {
+        id: 10,
+        category: 'sunscreen',
+        catLabel: 'กันแดด',
+        tone: 'ป้ายยาเพื่อน',
+        defaultProduct: 'กันแดดตัวนี้',
+        caption: 'เจอแล้วกันแดดในฝัน! {product} เนื้อบางเบาเหมือนทาเซรั่ม ซึมไวใน 3 วิ ไม่วอก ไม่เทา ไม่เป็นคราบระหว่างวัน ทาทับเมคอัพก็ยังรอด ใครยังไม่ลองคือพลาดมาก!',
+        hashtags: '#กันแดด #กันแดดเนื้อบางเบา #กันแดดไม่วอกไม่เยิ้ม #ป้ายยากันแดด #ทากันแดดทุกวัน #SunscreenReview #TikTokป้ายยา'
+      },
+      {
+        id: 11,
+        category: 'sunscreen',
+        catLabel: 'กันแดด',
+        tone: 'รีวิวจริงใจ',
+        defaultProduct: 'กันแดดหลอดนี้',
+        caption: 'แดดเมืองไทยแรงแค่ไหนก็ไม่หวั่นเพราะมี {product} ปกป้องผิวได้ครบ ทั้งคุมมัน กันน้ำกันเหงื่อ และไม่อุดตันผิว ใช้ทา 2 ข้อนิ้วได้สบายๆ แบบหน้าไม่หยาเลย',
+        hashtags: '#กันแดดคุมมัน #กันแดด2ข้อนิ้ว #กันแดดไม่อุดตัน #รีวิวกันแดด #แดดเมืองไทย #ใช้จริงรีวิวจริง'
+      },
+      {
+        id: 12,
+        category: 'sunscreen',
+        catLabel: 'กันแดด',
+        tone: 'มินิมอล',
+        defaultProduct: 'กันแดดคู่ใจตัวนี้',
+        caption: 'สกินแคร์ต่อต้านริ้วรอยที่ดีที่สุดคือกันแดด ☀️ ชอบ {product} ตรงที่ฟินิชผิวสวยกำลังดี ดูโกลว์ธรรมชาติแต่ไม่มันเยิ้ม',
+        hashtags: '#กันแดดผิวสวย #งานผิวธรรมชาติ #AntiAging #DailySunscreen #สกินแคร์ตอนเช้า'
+      },
+
+      // Acne Care
+      {
+        id: 13,
+        category: 'acne',
+        catLabel: 'ดูแลสิว',
+        tone: 'เน้นผลลัพธ์',
+        defaultProduct: 'เจลแต้มสิวตัวนี้',
+        caption: 'สิวอักเสบเม็ดเป้งบุกทีไรต้องพึ่ง {product} ทุกที แต้มปุ๊บยุบไว ไม่แสบ ไม่ทำให้ผิวบริเวณนั้นแห้งลอกเป็นขุย ไอเทมสามัญประจำบ้านที่คนเป็นสิวต้องมีติดไว้!',
+        hashtags: '#เจลแต้มสิว #รักษาสิว #สิวยุบไว #คนเป็นสิวต้องมี #ป้ายยาคนเป็นสิว #AcneCare #รีวิวลดสิว'
+      },
+      {
+        id: 14,
+        category: 'acne',
+        catLabel: 'ดูแลสิว',
+        tone: 'รีวิวจริงใจ',
+        defaultProduct: 'สกินแคร์ลดสิวตัวนี้',
+        caption: 'รีวิวแบบไม่อวย {product} ช่วยลดสิวผดและคุมความมันส่วนเกินได้ดีขึ้นจริง ที่ชอบมากคืออ่อนโยนต่อผิว ใช้แล้วหน้าไม่บาง ไม่เห่อ แค่ใจเย็นๆ รอผิวค่อยๆ แข็งแรงขึ้น',
+        hashtags: '#ลดสิวผด #ผิวเป็นสิวง่าย #รักษาสิวด้วยตัวเอง #แชร์ประสบการณ์ลดสิว #ไว้รีวิวห้ามขายของโว้ยย #SkincareJourney'
+      },
+      {
+        id: 15,
+        category: 'acne',
+        catLabel: 'ดูแลสิว',
+        tone: 'ป้ายยาเพื่อน',
+        defaultProduct: 'แผ่นแปะสิวตัวนี้',
+        caption: 'เป็นสิวแล้วชอบเผลอแกะ ต้องโดน {product} ด่วน! แปะเนียนไปกับผิวมาก แต่งหน้าทับแทบมองไม่เห็น แถมดูดสิวออกหมดจด ตื่นมาหัวสิวแห้งเรียบเลย',
+        hashtags: '#แผ่นแปะสิว #แปะสิวล่องหน #กู้หน้าสิว #ไอเทมกู้ชีพ #ป้ายยาของดี #TikTokShop'
+      },
+
+      // Mask
+      {
+        id: 16,
+        category: 'mask',
+        catLabel: 'มาส์กหน้า',
+        tone: 'มินิมอล',
+        defaultProduct: 'มาส์กหน้าตัวนี้',
+        caption: 'วันไหนเหนื่อยๆ ขอฮีลใจและฮีลผิวด้วย {product} สัก 15 นาที ฟินเหมือนทำสปาหน้าที่บ้าน ตื่นมาผิวนุ่มฉ่ำมาก 🧖‍♀️✨',
+        hashtags: '#มาส์กหน้า #สปาหน้าที่บ้าน #ฮีลผิว #เติมความชุ่มชื้น #NightRoutine #SelfCare'
+      },
+      {
+        id: 17,
+        category: 'mask',
+        catLabel: 'มาส์กหน้า',
+        tone: 'เน้นผลลัพธ์',
+        defaultProduct: 'สลีปปิ้งมาส์กตัวนี้',
+        caption: 'กู้หน้าพังก่อนวันสำคัญด้วย {product} แค่ทาทิ้งไว้แล้วนอน ตื่นมาผิวไบรท์อิ่มฟูขึ้นทันที รูขุมขนดูกระชับ ผิวนุ่มเด้งจนอยากจับหน้าตัวเองทั้งวัน!',
+        hashtags: '#สลีปปิ้งมาส์ก #กู้ผิวเร่งด่วน #หน้าใสข้ามคืน #มาส์กหน้ากู้ผิว #SleepingMask #Lemon8Beauty'
+      },
+      {
+        id: 18,
+        category: 'mask',
+        catLabel: 'มาส์กหน้า',
+        tone: 'ป้ายยาเพื่อน',
+        defaultProduct: 'มาส์กโคลนกระปุกนี้',
+        caption: 'ใครรูขุมขนกว้าง สิวเสี้ยนเยอะ ลอง {product} เลย! ช่วยดูดความมันส่วนเกินและสิ่งสกปรกออกดีมาก แต่ล้างออกง่ายไม่บาดผิว หน้าสะอาดโล่งสบายสุดๆ',
+        hashtags: '#มาส์กโคลน #ลดสิวเสี้ยน #กระชับรูขุมขน #ดีท็อกซ์ผิว #ป้ายยามาส์กหน้า #ใช้ดีบอกต่อ'
+      },
+
+      // Makeup & Lip
+      {
+        id: 19,
+        category: 'makeup',
+        catLabel: 'เมคอัพ & ลิป',
+        tone: 'ป้ายยาเพื่อน',
+        defaultProduct: 'ลิปแท่งนี้',
+        caption: 'สีนี้คือถูกต้องมาก! {product} ทาแล้วหน้าสว่างขับผิวสุดๆ เนื้อนุ่มละมุน เกลี่ยเบลอขอบปากง่าย ไม่ตกร่อง กินน้ำแล้วยังเหลือสเตนสวยๆ อยู่เลย ควรมีทุกสี!',
+        hashtags: '#รีวิวลิป #ลิปสีสวย #ลิปติดทน #ป้ายยาเมคอัพ #สวยบอกต่อ #LipstickReview #Lemon8สายเกา'
+      },
+      {
+        id: 20,
+        category: 'makeup',
+        catLabel: 'เมคอัพ & ลิป',
+        tone: 'รีวิวจริงใจ',
+        defaultProduct: 'คุชชั่นตลับนี้',
+        caption: 'เทสต์ให้ดูชัดๆ หลังลง {product} ผ่านไป 6 ชม. งานผิวยังสวยกริบ ไม่ดรอป ไม่เป็นคราบ แถมปกปิดรอยสิวได้เนียนเป็นธรรมชาติ คุมมันกำลังดีไม่แมตต์จนแห้ง',
+        hashtags: '#รีวิวคุชชั่น #งานผิวสวย #คุชชั่นคุมมัน #แต่งหน้าติดทน #เมคอัพงานผิว #ไว้รีวิวห้ามขายของโว้ยย'
+      },
+      {
+        id: 21,
+        category: 'makeup',
+        catLabel: 'เมคอัพ & ลิป',
+        tone: 'มินิมอล',
+        defaultProduct: 'ลิปบาล์มตัวนี้',
+        caption: 'Everyday favorite 💄 ปากแห้งลอกแค่ไหนก็รอดด้วย {product} เติมร่องปากให้ดูอวบอิ่มฉ่ำวาว สีระเรื่อเป็นธรรมชาติ ทาได้ทุกวันแบบหน้าสดยังรอด',
+        hashtags: '#ลิปบาล์มมีสี #ปากฉ่ำวาว #บำรุงริมฝีปาก #EverydayLook #CleanGirlMakeup #บิวตี้ไอเทม'
+      },
+
+      // Body Care
+      {
+        id: 22,
+        category: 'body',
+        catLabel: 'บอดี้แคร์',
+        tone: 'เน้นผลลัพธ์',
+        defaultProduct: 'โลชั่นขวดนี้',
+        caption: 'ผิวตัวก็ต้องดูแลไม่แพ้ผิวหน้า! ใช้ {product} ต่อเนื่องแล้วผิวนุ่มลื่นเนียนละเอียดขึ้นมาก สีผิวดูสม่ำเสมอขึ้น แถมกลิ่นหอมติดผิวติดผ้าห่มจนเพื่อนทักว่าใช้น้ำหอมอะไร',
+        hashtags: '#บอดี้แคร์ #โลชั่นตัวหอม #ผิวใสเนียนนุ่ม #ดูแลผิวกาย #รีวิวโลชั่น #BodyCareRoutine #ตัวหอมบอกต่อ'
+      },
+      {
+        id: 23,
+        category: 'body',
+        catLabel: 'บอดี้แคร์',
+        tone: 'ป้ายยาเพื่อน',
+        defaultProduct: 'ออยล์บำรุงผิวตัวนี้',
+        caption: 'บอกลาผิวแห้งกร้านเป็นขุยด้วย {product} ทาหลังอาบน้ำตอนตัวหมาดๆ คือซึมไวไม่เหนียวเหนอะหนะเลย แต่ให้ความชุ่มชื้นยาวนาน ผิวดูโกลว์เล่นแสงสุขภาพดีสุดๆ',
+        hashtags: '#บอดี้ออยล์ #ผิวโกลว์ #ผิวชุ่มชื้น #ป้ายยาบอดี้แคร์ #ไอเทมตัวหอม #ผิวสวยสุขภาพดี'
+      },
+      {
+        id: 24,
+        category: 'body',
+        catLabel: 'บอดี้แคร์',
+        tone: 'มินิมอล',
+        defaultProduct: 'สครับตัวนี้',
+        caption: 'ผลัดเซลล์ผิวเก่าเบาๆ สัปดาห์ละ 2 ครั้งด้วย {product} เม็ดสครับละเอียดไม่บาดผิว ล้างออกแล้วผิวนุ่มลื่นเหมือนผิวเด็กเลย 🌸',
+        hashtags: '#สครับผิว #ผลัดเซลล์ผิว #ผิวเนียนใส #สปาผิว #บิวตี้รูทีน #SelfCareDay'
+      }
+    ];
+
+    // State
+    let selectedCategory = 'all';
+    let selectedTone = 'all';
+    let searchQuery = '';
+    let productName = '';
+    let favorites = JSON.parse(localStorage.getItem('beautycap_favs') || '[]');
+
+    // Elements
+    const categoryPillsEl = document.getElementById('categoryPills');
+    const tonePillsEl = document.getElementById('tonePills');
+    const cardsGridEl = document.getElementById('cardsGrid');
+    const productInputEl = document.getElementById('productInput');
+    const searchInputEl = document.getElementById('searchInput');
+    const resultCountEl = document.getElementById('resultCount');
+    const clearFilterBtn = document.getElementById('clearFilterBtn');
+    const randomBtn = document.getElementById('randomBtn');
+    const toastEl = document.getElementById('toast');
+
+    let toastTimer = null;
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function showToast(message) {
+      toastEl.textContent = message;
+      toastEl.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toastEl.classList.remove('show');
+      }, 2200);
+    }
+
+    function copyText(text, successMsg) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text)
+          .then(() => showToast(successMsg))
+          .catch(() => fallbackCopy(text, successMsg));
+      } else {
+        fallbackCopy(text, successMsg);
+      }
+    }
+
+    function fallbackCopy(text, successMsg) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMsg);
+      } catch (e) {
+        showToast('ไม่สามารถคัดลอกอัตโนมัติได้ กรุณาก๊อปปี้ด้วยตนเอง');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function getPlainCaption(item) {
+      const targetName = productName.trim() || item.defaultProduct;
+      return item.caption.replace(/\{product\}/g, targetName);
+    }
+
+    function getHighlightedCaptionHTML(item) {
+      const targetName = productName.trim() || item.defaultProduct;
+      const safeCaption = escapeHtml(item.caption);
+      const safeProduct = escapeHtml(targetName);
+      return safeCaption.replace(/\{product\}/g, `<span class="product-highlight">${safeProduct}</span>`);
+    }
+
+    function toggleFavorite(id) {
+      if (favorites.includes(id)) {
+        favorites = favorites.filter(favId => favId !== id);
+        showToast('นำออกจากรายการที่บันทึกแล้ว');
+      } else {
+        favorites.push(id);
+        showToast('บันทึกแคปชั่นที่ชอบแล้ว ❤️');
+      }
+      localStorage.setItem('beautycap_favs', JSON.stringify(favorites));
+      renderCards();
+    }
+
+    function renderFilters() {
+      categoryPillsEl.innerHTML = CATEGORIES.map(cat => `
+        <button class="pill ${selectedCategory === cat.id ? 'active' : ''}" data-cat="${cat.id}">
+          ${cat.label}
+        </button>
+      `).join('');
+
+      tonePillsEl.innerHTML = TONES.map(tone => `
+        <button class="pill tone-pill ${selectedTone === tone.id ? 'active' : ''}" data-tone="${tone.id}">
+          ${tone.label}
+        </button>
+      `).join('');
+
+      categoryPillsEl.querySelectorAll('.pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedCategory = btn.dataset.cat;
+          renderFilters();
+          renderCards();
+        });
+      });
+
+      tonePillsEl.querySelectorAll('.pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedTone = btn.dataset.tone;
+          renderFilters();
+          renderCards();
+        });
+      });
+    }
+
+    function getFilteredItems() {
+      const q = searchQuery.trim().toLowerCase();
+      return DATA.filter(item => {
+        const matchCat =
+          selectedCategory === 'all' ||
+          (selectedCategory === 'favorites' ? favorites.includes(item.id) : item.category === selectedCategory);
+
+        const matchTone = selectedTone === 'all' || item.tone === selectedTone;
+
+        const plainCap = getPlainCaption(item).toLowerCase();
+        const matchQuery =
+          !q ||
+          plainCap.includes(q) ||
+          item.hashtags.toLowerCase().includes(q) ||
+          item.catLabel.toLowerCase().includes(q);
+
+        return matchCat && matchTone && matchQuery;
+      });
+    }
+
+    function renderCards(forcedItems = null) {
+      const items = forcedItems || getFilteredItems();
+
+      const hasActiveFilter = selectedCategory !== 'all' || selectedTone !== 'all' || searchQuery.trim() !== '';
+      clearFilterBtn.style.display = hasActiveFilter ? 'inline' : 'none';
+
+      resultCountEl.textContent = forcedItems
+        ? '🎲 แคปชั่นสุ่มแนะนำสำหรับคุณ'
+        : `พบ ${items.length} แคปชั่นคู่แฮชแท็ก`;
+
+      if (items.length === 0) {
+        cardsGridEl.innerHTML = `
+          <div class="empty-state">
+            <div style="font-size:2rem; margin-bottom:8px;">🔍</div>
+            <p><strong>ไม่พบแคปชั่นที่ตรงกับตัวกรองนี้</strong></p>
+            <p style="font-size:0.88rem; margin-top:4px;">ลองเปลี่ยนหมวดหมู่หรือลบคำค้นหาดูนะครับ</p>
+          </div>
+        `;
+        return;
+      }
+
+      cardsGridEl.innerHTML = items.map(item => {
+        const isFav = favorites.includes(item.id);
+        return `
+          <article class="card">
+            <div>
+              <div class="card-header">
+                <div class="badges">
+                  <span class="badge badge-cat">${item.catLabel}</span>
+                  <span class="badge badge-tone">${item.tone}</span>
+                </div>
+                <button class="fav-btn ${isFav ? 'saved' : ''}" data-fav="${item.id}" title="บันทึกแคปชั่นนี้">
+                  ${isFav ? '♥' : '♡'}
+                </button>
+              </div>
+
+              <div class="caption-box">${getHighlightedCaptionHTML(item)}</div>
+              <div class="hashtag-box">${escapeHtml(item.hashtags)}</div>
+            </div>
+
+            <div class="card-actions">
+              <button class="btn-copy btn-copy-all" data-copy-all="${item.id}">
+                📋 คัดลอกทั้งหมด
+              </button>
+              <button class="btn-copy btn-copy-sub" data-copy-cap="${item.id}">
+                แคปชั่น
+              </button>
+              <button class="btn-copy btn-copy-sub" data-copy-tag="${item.id}">
+                #แท็ก
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      // Attach listeners
+      cardsGridEl.querySelectorAll('[data-fav]').forEach(btn => {
+        btn.addEventListener('click', () => toggleFavorite(Number(btn.dataset.fav)));
+      });
+
+      cardsGridEl.querySelectorAll('[data-copy-all]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = DATA.find(d => d.id === Number(btn.dataset.copyAll));
+          const fullText = `${getPlainCaption(item)}\n\n${item.hashtags}`;
+          copyText(fullText, 'คัดลอกแคปชั่น + แฮชแท็กแล้ว! ✨');
+        });
+      });
+
+      cardsGridEl.querySelectorAll('[data-copy-cap]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = DATA.find(d => d.id === Number(btn.dataset.copyCap));
+          copyText(getPlainCaption(item), 'คัดลอกเฉพาะแคปชั่นแล้ว! 📝');
+        });
+      });
+
+      cardsGridEl.querySelectorAll('[data-copy-tag]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = DATA.find(d => d.id === Number(btn.dataset.copyTag));
+          copyText(item.hashtags, 'คัดลอกเฉพาะแฮชแท็กแล้ว! #️⃣');
+        });
+      });
+    }
+
+    // Event Listeners
+    productInputEl.addEventListener('input', (e) => {
+      productName = e.target.value;
+      renderCards();
+    });
+
+    searchInputEl.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderCards();
+    });
+
+    clearFilterBtn.addEventListener('click', () => {
+      selectedCategory = 'all';
+      selectedTone = 'all';
+      searchQuery = '';
+      searchInputEl.value = '';
+      renderFilters();
+      renderCards();
+    });
+
+    randomBtn.addEventListener('click', () => {
+      const pool = getFilteredItems();
+      const source = pool.length > 0 ? pool : DATA;
+      const randomItem = source[Math.floor(Math.random() * source.length)];
+      renderCards([randomItem]);
+      showToast('สุ่มแคปชั่นป้ายยาให้แล้ว! 🎲');
+    });
+
+    // Init
+    renderFilters();
+    renderCards();
+  </script>
+</body>
+</html>
